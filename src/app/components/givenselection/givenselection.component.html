@@ -1,0 +1,62 @@
+<p-growl [(value)]="msgs"></p-growl>
+
+<br>
+
+<div class="row">
+  <div class="col-md-12" style="text-align: center;">
+      <button class="btn btn-primary" style="float:left;font-size:15px;" [routerLink]="['/']"><i class="fa fa fa-angle-left"></i> &nbsp; BACK</button>
+    <span>
+      <button class="btn" style="border-radius: 0px;width:25%;margin-top:8px" [ngClass]="!listshow ? 'btn-secondary' : 'btn-primary' "
+        (click)="listshow = true;">VIRTUAL SCROLL</button>
+      <button class="btn" style="border-radius: 0px;margin-left: -4px;width:25%;margin-top:8px" [ngClass]="listshow ? 'btn-secondary' : 'btn-primary' "
+        (click)="listshow = false;">PAGINATION</button>
+    </span>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <input type="text" class="form-control" (input)="changesonsearch()" [(ngModel)]="username" placeholder="Search with Username (Runtime)">
+      </div>
+      <div class="col-md-3">
+        <input type="text" class="form-control" (input)="changesonsearch()" [(ngModel)]="email" placeholder="Search with Email (Runtime)">
+      </div>
+      <div class="col-md-2" style="text-align: right;margin-top: 10px;">
+        AGENCY NAME:
+        </div>
+        <div class="col-md-4">
+        <p-tabView (onChange)="onListTypeChange($event)" [style]="{'padding':'0','background-color':'transparent'}">
+          <p-tabPanel header="ALL" [selected]="true" style="display:none">
+          </p-tabPanel>
+          <p-tabPanel header="NULL" style="display:none">
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="height:95vh;" *ngIf="showSpinner">
+        <div style="margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);color:#4c95e6">
+          <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div *ngIf="!showSpinner">
+        <div *ngIf="listshow">
+          <app-givenlistjson [datatoshow]="datatoshow"></app-givenlistjson>
+        </div>
+        <div *ngIf="!listshow">
+          <app-givenpaginate [datatoshow]="datatoshow"></app-givenpaginate>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

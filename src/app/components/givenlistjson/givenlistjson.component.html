@@ -1,0 +1,31 @@
+<p-dataScroller [value]="datatoshow" [rows]="10">
+    <p-header>
+      VIRTUAL SCROLL
+    </p-header>
+    <ng-template let-datas pTemplate="item" let-i="index">
+      <div class="mainborder">
+        <div class="row">
+          <div class="col-xs-12">
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                UserName: {{(datas.firstname ? datas.firstname : '-') | titlecase}}
+              </div>
+              <div class="col-md-6">
+                LastName: {{(datas.lastname !== 'NULL' ? datas.lastname : '-') | titlecase}}
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-6">
+                Email: {{(datas.email ? datas.email : '-')}}
+              </div>
+              <div class="col-md-6">
+                Agency Name: {{(datas.agency_name ? datas.agency_name : '-') | titlecase}}
+              </div>
+            </div><br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataScroller>

@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+.btn-primary{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color: #337ab7;
+  border: 1px solid #337ab7;
+  color: white;
+  font-size: 12px;
+}
+
+.btn-secondary{
+  background-color: #ffffff;
+  color: #383838;
+  border: 1px solid black;
+  font-size: 12px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.mainborder{
+  border: 1px solid grey;
+}
